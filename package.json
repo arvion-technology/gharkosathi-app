@@ -1,0 +1,26 @@
+{
+  "name": "gharkosathi-app",
+  "version": "1.0.0",
+  "description": "Flutter case study from a production home-services platform: KYC-gated worker onboarding, real-time job tracking, escrow payments and offline-first job updates.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Arvion Technologies <hello@arviontech.net> (https://arviontech.net)",
+  "homepage": "https://arvion-technology.github.io/labs/demos/gharkosathi-app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arvion-technology/gharkosathi-app.git"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node scripts/serve.mjs . 4173",
+    "shot": "node scripts/shot.mjs 1440 900 docs/screenshot.png",
+    "shot:2": "node scripts/shot.mjs 1440 900 docs/screenshot-2.png '#/flow'",
+    "verify": "node --test test/ && node scripts/serve-check.mjs",
+    "test:dart": "dart test/state_machine_test.dart && dart test/offline_queue_test.dart",
+    "analyze": "flutter analyze lib"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
