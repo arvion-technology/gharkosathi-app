@@ -1,0 +1,48 @@
+{
+  "description": "Shared job-lifecycle vectors. lib/core/state_machine.dart and src/state-machine.js both run this file in their tests.",
+  "states": [
+    "draft", "requested", "matching", "matched", "enRoute", "inProgress",
+    "completed", "paid", "disputed", "refunded", "cancelled", "closed"
+  ],
+  "edges": [
+    ["draft", "requested"],
+    ["requested", "matching"], ["requested", "cancelled"],
+    ["matching", "matched"], ["matching", "requested"], ["matching", "cancelled"],
+    ["matched", "enRoute"], ["matched", "cancelled"], ["matched", "disputed"],
+    ["enRoute", "inProgress"], ["enRoute", "cancelled"], ["enRoute", "disputed"],
+    ["inProgress", "completed"], ["inProgress", "disputed"],
+    ["completed", "paid"], ["completed", "disputed"],
+    ["paid", "disputed"], ["paid", "closed"],
+    ["disputed", "refunded"], ["disputed", "paid"], ["disputed", "closed"],
+    ["refunded", "closed"],
+    ["cancelled", "closed"]
+  ],
+  "forbidden": [
+    ["draft", "paid"],
+    ["requested", "completed"],
+    ["requested", "inProgress"],
+    ["matching", "paid"],
+    ["completed", "enRoute"],
+    ["inProgress", "paid"],
+    ["closed", "requested"],
+    ["paid", "requested"],
+    ["cancelled", "matched"]
+  ],
+  "guards": [
+    { "from": "matching", "to": "matched", "context": {}, "allowed": false },
+    { "from": "matching", "to": "matched", "context": { "workerId": "w_1" }, "allowed": true },
+    { "from": "completed", "to": "paid", "context": { "escrowHeld": true, "proofUploaded": false }, "allowed": false },
+    { "from": "completed", "to": "paid", "context": { "escrowHeld": true, "proofUploaded": true }, "allowed": true },
+    { "from": "enRoute", "to": "cancelled", "context": {}, "allowed": false },
+    { "from": "enRoute", "to": "cancelled", "context": { "feeAccepted": true }, "allowed": true },
+    { "from": "inProgress", "to": "disputed", "context": { "reason": "" }, "allowed": false },
+    { "from": "inProgress", "to": "disputed", "context": { "reason": "tap still drips" }, "allowed": true },
+    { "from": "paid", "to": "disputed", "context": { "reason": "leak", "withinDisputeWindow": false }, "allowed": false },
+    { "from": "paid", "to": "disputed", "context": { "reason": "leak", "withinDisputeWindow": true }, "allowed": true }
+  ],
+  "flows": {
+    "happy": ["requested", "matching", "matched", "enRoute", "inProgress", "completed", "paid", "closed"],
+    "dispute": ["requested", "matching", "matched", "enRoute", "inProgress", "completed", "disputed", "refunded", "closed"],
+    "cancel": ["requested", "matching", "matched", "cancelled", "closed"]
+  }
+}
