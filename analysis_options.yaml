@@ -1,0 +1,10 @@
+analyzer:
+  exclude:
+    - build/**
+  language:
+    strict-casts: true
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    avoid_print: true
