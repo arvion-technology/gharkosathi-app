@@ -1,4 +1,4 @@
-# ADR 0002 — ordered queue with idempotency keys over fire-and-forget writes
+# ADR 0002: ordered queue with idempotency keys over fire-and-forget writes
 
 **Status:** accepted.
 
@@ -25,7 +25,7 @@ screen paints.
 - A later update never overtakes an earlier one, even if the server would accept
   it.
 - A poison operation blocks the queue. After five attempts the UI marks it
-  exhausted and offers to discard it; the alternative — silently dropping it —
+  exhausted and offers to discard it; the alternative, silently dropping it.
   loses the user's action without telling them.
 - The queue is not a sync engine. It handles this app's ordered job mutations,
   not arbitrary concurrent edits. A general conflict-resolution layer would be a

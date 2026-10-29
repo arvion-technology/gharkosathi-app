@@ -1,4 +1,4 @@
-# ADR 0003 — no third-party state or router package in the sample
+# ADR 0003: no third-party state or router package in the sample
 
 **Status:** accepted for the sample; the production app uses Riverpod.
 

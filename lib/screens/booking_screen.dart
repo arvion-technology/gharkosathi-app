@@ -21,7 +21,7 @@ class _BookingScreenState extends State<BookingScreen> {
   int _slot = 0;
   bool _submitting = false;
 
-  static const _slots = ['Today, 2–4 PM', 'Tomorrow, 9–11 AM', 'Saturday, 10–12'];
+  static const _slots = ['Today, 2-4 PM', 'Tomorrow, 9-11 AM', 'Saturday, 10-12'];
 
   @override
   void initState() {

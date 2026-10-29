@@ -35,7 +35,7 @@ class TestSuite {
   }
 
   void equals(Object? actual, Object? expected, String message) {
-    if (actual != expected) throw '$message — expected $expected, got $actual';
+    if (actual != expected) throw '$message, expected $expected, got $actual';
   }
 
   void run() {

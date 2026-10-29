@@ -2,7 +2,7 @@
 <img src="docs/demo.gif" alt="GharKo Sathi case study overview with three phone screens" width="100%" />
 </div>
 
-<sub>Recorded from the live demo — <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
+<sub>Recorded from the live demo, <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
 
 # GharKo Sathi
 
@@ -30,20 +30,20 @@ is no store link to give.
 
 ## What it does
 
-- **Eight Flutter screens** — splash/session, service catalogue, booking, worker
+- **Eight Flutter screens**: splash/session, service catalogue, booking, worker
   profile, worker KYC, job tracking, wallet and escrow, and dispute.
-- **A twelve-state job lifecycle** — requested, matching, matched, en route, in
+- **A twelve-state job lifecycle**: requested, matching, matched, en route, in
   progress, completed, paid, disputed, refunded, cancelled and closed, with
   twenty-three legal edges and eight guards.
-- **KYC-gated matching** — a worker record carries a `KycState`; matching filters
+- **KYC-gated matching**: a worker record carries a `KycState`; matching filters
   on `isVerified`, so an unverified worker cannot appear as bookable.
-- **Escrow derived from the job** — held, releasable, released and frozen are
+- **Escrow derived from the job**: held, releasable, released and frozen are
   computed from the status, so the wallet and the timeline cannot disagree.
-- **An ordered offline queue** — idempotency keys, stop-on-first-failure,
+- **An ordered offline queue**: idempotency keys, stop-on-first-failure,
   exponential backoff, JSON persistence across a process kill.
-- **A case-study site** — a device-frame gallery of all eight screens, the
+- **A case-study site**: a device-frame gallery of all eight screens, the
   lifecycle diagram, a live offline-queue simulator and a derived escrow table.
-- **Written architecture** — `docs/architecture.md` plus three ADRs recording the
+- **Written architecture**: `docs/architecture.md` plus three ADRs recording the
   decisions that shaped the code, including what was deliberately left out.
 
 ## Screenshots

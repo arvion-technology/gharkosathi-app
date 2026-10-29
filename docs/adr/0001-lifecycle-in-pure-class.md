@@ -1,4 +1,4 @@
-# ADR 0001 — the lifecycle lives in a pure class, not in screens
+# ADR 0001: the lifecycle lives in a pure class, not in screens
 
 **Status:** accepted.
 
